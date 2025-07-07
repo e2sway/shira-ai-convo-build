@@ -24,4 +24,4 @@ export default function App(): React.ReactElement {
       </QueryClientProvider>
     </SafeAreaProvider>
   );
-} 
+}

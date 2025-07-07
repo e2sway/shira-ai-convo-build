@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   },
-  
+
   // Variants
   primary: {
     backgroundColor: COLORS.PRIMARY,
@@ -155,4 +155,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button; 
+export default Button;

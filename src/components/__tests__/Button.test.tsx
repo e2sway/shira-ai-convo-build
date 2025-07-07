@@ -41,7 +41,7 @@ describe('Button', () => {
 
     // Text should be hidden when loading
     expect(queryByText('Test Button')).toBeNull();
-    
+
     // We can test for loading state by checking that text is not visible
     // ActivityIndicator presence is implicit in the loading state
     expect(queryByText('Test Button')).toBeNull();
@@ -130,34 +130,26 @@ describe('Button', () => {
   it('applies custom styles', () => {
     const customStyle = { marginTop: 20 };
     const { getByRole } = render(
-      <Button 
-        title="Custom Style" 
-        onPress={mockOnPress} 
-        style={customStyle}
-      />
+      <Button title="Custom Style" onPress={mockOnPress} style={customStyle} />
     );
 
     const button = getByRole('button');
-    expect(button.props.style).toEqual(
-      expect.objectContaining(customStyle)
-    );
+    expect(button.props.style).toEqual(expect.objectContaining(customStyle));
   });
 
   it('applies custom text styles', () => {
     const customTextStyle = { fontStyle: 'italic' as const };
     const { getByText } = render(
-      <Button 
-        title="Custom Text" 
-        onPress={mockOnPress} 
+      <Button
+        title="Custom Text"
+        onPress={mockOnPress}
         textStyle={customTextStyle}
       />
     );
 
     const text = getByText('Custom Text');
     expect(text.props.style).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining(customTextStyle)
-      ])
+      expect.arrayContaining([expect.objectContaining(customTextStyle)])
     );
   });
-}); 
+});

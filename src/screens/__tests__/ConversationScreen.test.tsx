@@ -10,9 +10,7 @@ jest.mock('../../utils/logger', () => ({
 
 // Test wrapper for navigation
 const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <NavigationContainer>
-    {children}
-  </NavigationContainer>
+  <NavigationContainer>{children}</NavigationContainer>
 );
 
 describe('ConversationScreen', () => {
@@ -100,7 +98,9 @@ describe('ConversationScreen', () => {
       </TestWrapper>
     );
 
-    expect(getByText('Audio conversation interface will be implemented here')).toBeTruthy();
+    expect(
+      getByText('Audio conversation interface will be implemented here')
+    ).toBeTruthy();
   });
 
   it('shows recording indicator elements', () => {
@@ -113,4 +113,4 @@ describe('ConversationScreen', () => {
     // Recording status should be visible
     expect(getByText('Ready to start')).toBeTruthy();
   });
-}); 
+});

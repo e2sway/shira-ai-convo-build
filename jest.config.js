@@ -31,4 +31,4 @@ export default {
   transformIgnorePatterns: [
     'node_modules/(?!(react-native|@react-native|expo|@expo|expo-modules-core|expo-av|expo-constants|@react-navigation|zustand|nativewind)/)',
   ],
-}; 
+};

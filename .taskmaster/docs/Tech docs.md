@@ -1,28 +1,28 @@
 TypeScript
 https://www.typescriptlang.org/docs/
 
-React Native 
+React Native
 https://reactnative.dev/docs/getting-started
 
-Task Master 
+Task Master
 https://github.com/bestyec/gemini-2.5-pro-task-master#
 
-Expo Go 
+Expo Go
 https://docs.expo.dev/
 
 Google Live API
 https://ai.google.dev/gemini-api/docs/live
 
-Google Gemini 
+Google Gemini
 https://ai.google.dev/gemini-api/docs
 
-Perplexity 
+Perplexity
 https://docs.perplexity.ai/home
 
-Eslint 
+Eslint
 https://eslint.org/docs/latest/
 
-Supabase 
+Supabase
 https://supabase.com/docs/guides/getting-started/mcp
 
 Babel

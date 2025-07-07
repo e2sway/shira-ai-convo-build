@@ -1,11 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import Button from '../components/Button';
 import { COLORS, SPACING, FONT_SIZES, BORDER_RADIUS } from '../constants';
 import { useAudioState, useAppStore } from '../stores/appStore';
@@ -18,83 +12,91 @@ interface IConversationScreenProps {
   };
 }
 
-const ConversationScreen: React.FC<IConversationScreenProps> = React.memo(({ navigation }) => {
-  const audioState = useAudioState();
-  const { startRecording, stopRecording, connect, disconnect } = useAppStore();
+const ConversationScreen: React.FC<IConversationScreenProps> = React.memo(
+  ({ navigation }) => {
+    const audioState = useAudioState();
+    const { startRecording, stopRecording, connect, disconnect } =
+      useAppStore();
 
-  const handleStartConversation = useCallback(() => {
-    logUserAction('start_conversation', 'ConversationScreen');
-    if (!audioState.isConnected) {
-      connect();
-    }
-    startRecording();
-  }, [audioState.isConnected, connect, startRecording]);
+    const handleStartConversation = useCallback(() => {
+      logUserAction('start_conversation', 'ConversationScreen');
+      if (!audioState.isConnected) {
+        connect();
+      }
+      startRecording();
+    }, [audioState.isConnected, connect, startRecording]);
 
-  const handleEndConversation = useCallback(() => {
-    logUserAction('end_conversation', 'ConversationScreen');
-    stopRecording();
-    disconnect();
-    navigation?.goBack();
-  }, [stopRecording, disconnect, navigation]);
+    const handleEndConversation = useCallback(() => {
+      logUserAction('end_conversation', 'ConversationScreen');
+      stopRecording();
+      disconnect();
+      navigation?.goBack();
+    }, [stopRecording, disconnect, navigation]);
 
-  const statusText = useMemo(() => 
-    audioState.isRecording ? 'Recording...' : 'Ready to start',
-    [audioState.isRecording]
-  );
+    const statusText = useMemo(
+      () => (audioState.isRecording ? 'Recording...' : 'Ready to start'),
+      [audioState.isRecording]
+    );
 
-  const connectionStatus = useMemo(() => 
-    audioState.isConnected ? '🟢 Connected' : '⚫ Disconnected',
-    [audioState.isConnected]
-  );
+    const connectionStatus = useMemo(
+      () => (audioState.isConnected ? '🟢 Connected' : '⚫ Disconnected'),
+      [audioState.isConnected]
+    );
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Conversation with Shira AI</Text>
-        <Text style={styles.status}>
-          {connectionStatus}
-        </Text>
-      </View>
-
-      <ScrollView style={styles.content} contentContainerStyle={styles.contentContainer}>
-        <View style={styles.conversationArea}>
-          <Text style={styles.placeholder}>
-            Audio conversation interface will be implemented here
-          </Text>
-          
-          <View style={styles.statusIndicator}>
-            <View style={[
-              styles.recordingDot,
-              audioState.isRecording && styles.recordingActive,
-            ]} />
-            <Text style={styles.statusText}>
-              {statusText}
-            </Text>
-          </View>
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Conversation with Shira AI</Text>
+          <Text style={styles.status}>{connectionStatus}</Text>
         </View>
-      </ScrollView>
 
-      <View style={styles.controls}>
-        <Button
-          title={audioState.isRecording ? 'Stop Recording' : 'Start Conversation'}
-          onPress={audioState.isRecording ? stopRecording : handleStartConversation}
-          variant={audioState.isRecording ? 'secondary' : 'primary'}
-          size="large"
-          fullWidth
-        />
-        
-        <Button
-          title="End Conversation"
-          onPress={handleEndConversation}
-          variant="outline"
-          size="medium"
-          fullWidth
-          style={styles.endButton}
-        />
-      </View>
-    </SafeAreaView>
-  );
-});
+        <ScrollView
+          style={styles.content}
+          contentContainerStyle={styles.contentContainer}
+        >
+          <View style={styles.conversationArea}>
+            <Text style={styles.placeholder}>
+              Audio conversation interface will be implemented here
+            </Text>
+
+            <View style={styles.statusIndicator}>
+              <View
+                style={[
+                  styles.recordingDot,
+                  audioState.isRecording && styles.recordingActive,
+                ]}
+              />
+              <Text style={styles.statusText}>{statusText}</Text>
+            </View>
+          </View>
+        </ScrollView>
+
+        <View style={styles.controls}>
+          <Button
+            title={
+              audioState.isRecording ? 'Stop Recording' : 'Start Conversation'
+            }
+            onPress={
+              audioState.isRecording ? stopRecording : handleStartConversation
+            }
+            variant={audioState.isRecording ? 'secondary' : 'primary'}
+            size="large"
+            fullWidth
+          />
+
+          <Button
+            title="End Conversation"
+            onPress={handleEndConversation}
+            variant="outline"
+            size="medium"
+            fullWidth
+            style={styles.endButton}
+          />
+        </View>
+      </SafeAreaView>
+    );
+  }
+);
 
 ConversationScreen.displayName = 'ConversationScreen';
 
@@ -170,4 +172,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConversationScreen; 
+export default ConversationScreen;

@@ -1,13 +1,7 @@
 // Home Screen for Shira AI Conversation Builder
 
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { Button } from '../components';
 import { COLORS, SPACING, FONT_SIZES } from '../constants';
 
@@ -38,7 +32,7 @@ const HomeScreen: React.FC<IHomeScreenProps> = () => {
 
         <View style={styles.featuresSection}>
           <Text style={styles.sectionTitle}>Features</Text>
-          
+
           <View style={styles.featureItem}>
             <Text style={styles.featureTitle}>AI-Powered Conversations</Text>
             <Text style={styles.featureDescription}>
@@ -69,9 +63,9 @@ const HomeScreen: React.FC<IHomeScreenProps> = () => {
             size="large"
             fullWidth
           />
-          
+
           <View style={styles.spacer} />
-          
+
           <Button
             title="View History"
             onPress={handleViewHistory}
@@ -151,4 +145,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen; 
+export default HomeScreen;

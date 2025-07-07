@@ -46,7 +46,11 @@ class Logger {
   /**
    * Log an error message
    */
-  error(message: string, error?: Error, context?: Record<string, unknown>): void {
+  error(
+    message: string,
+    error?: Error,
+    context?: Record<string, unknown>
+  ): void {
     this.log('error', message, context, error);
   }
 
@@ -84,7 +88,7 @@ class Logger {
    */
   private addLogEntry(logEntry: ILogEntry): void {
     this.logEntries.push(logEntry);
-    
+
     // Keep only the latest entries to prevent memory leaks
     if (this.logEntries.length > this.maxLogEntries) {
       this.logEntries = this.logEntries.slice(-this.maxLogEntries);
@@ -97,7 +101,7 @@ class Logger {
   private outputToConsole(logEntry: ILogEntry): void {
     const { level, message, timestamp, context, error } = logEntry;
     const prefix = `[${timestamp}] [${level.toUpperCase()}]`;
-    
+
     switch (level) {
       case 'debug':
         console.log(`${prefix} ${message}`, context || '');
@@ -122,7 +126,7 @@ class Logger {
   private sendToCrashlytics(logEntry: ILogEntry): void {
     // In a real app, integrate with Firebase Crashlytics, Sentry, or similar
     // Example: Crashlytics().recordError(logEntry.error || new Error(logEntry.message));
-    
+
     // For now, we'll store it for potential upload
     this.debug('Would send to crashlytics:', {
       level: logEntry.level,
@@ -156,7 +160,11 @@ class Logger {
   /**
    * Log user interactions
    */
-  logUserAction(action: string, screen?: string, data?: Record<string, unknown>): void {
+  logUserAction(
+    action: string,
+    screen?: string,
+    data?: Record<string, unknown>
+  ): void {
     this.info(`User Action: ${action}`, {
       screen,
       ...data,
@@ -166,7 +174,12 @@ class Logger {
   /**
    * Log API calls
    */
-  logApiCall(method: string, url: string, status?: number, duration?: number): void {
+  logApiCall(
+    method: string,
+    url: string,
+    status?: number,
+    duration?: number
+  ): void {
     const level = status && status >= 400 ? 'error' : 'info';
     this.log(level, `API Call: ${method} ${url}`, {
       status,
@@ -198,4 +211,4 @@ export const logUserAction = logger.logUserAction.bind(logger);
 export const logApiCall = logger.logApiCall.bind(logger);
 export const logPerformance = logger.logPerformance.bind(logger);
 
-export default logger; 
+export default logger;

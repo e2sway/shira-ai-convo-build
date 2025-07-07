@@ -31,6 +31,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 ### Scopes
 
 Common scopes for this project:
+
 - **api**: Gemini Live API integration
 - **ui**: User interface components
 - **audio**: Audio processing and streaming
@@ -68,6 +69,7 @@ chore(config): update TypeScript strict rules
 ### Workflow
 
 1. **Feature Development**:
+
    ```bash
    git checkout develop
    git pull origin develop
@@ -78,6 +80,7 @@ chore(config): update TypeScript strict rules
    ```
 
 2. **Bug Fixes**:
+
    ```bash
    git checkout develop
    git checkout -b bugfix/issue-description
@@ -126,12 +129,14 @@ chore(config): update TypeScript strict rules
 ## Git Hooks
 
 ### Pre-commit
+
 - Run ESLint
 - Run TypeScript type checking
 - Format code with Prettier
 - Run affected tests
 
 ### Pre-push
+
 - Run full test suite
 - Verify build passes
 
@@ -206,4 +211,4 @@ git config --global alias.last 'log -1 HEAD'
 git config --global alias.visual '!gitk'
 ```
 
-This convention ensures consistent, traceable, and maintainable code history throughout the project lifecycle. 
+This convention ensures consistent, traceable, and maintainable code history throughout the project lifecycle.

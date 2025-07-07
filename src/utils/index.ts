@@ -14,7 +14,7 @@ export const formatDate = (date: Date): string => {
   if (minutes < 60) return `${minutes}m ago`;
   if (hours < 24) return `${hours}h ago`;
   if (days < 7) return `${days}d ago`;
-  
+
   return date.toLocaleDateString();
 };
 
@@ -64,7 +64,7 @@ export const debounce = <T extends (...args: any[]) => any>(
   wait: number
 ): ((...args: Parameters<T>) => void) => {
   let timeout: number;
-  
+
   return (...args: Parameters<T>) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait) as unknown as number;
@@ -77,10 +77,10 @@ export const debounce = <T extends (...args: any[]) => any>(
 export const deepClone = <T>(obj: T): T => {
   if (obj === null || typeof obj !== 'object') return obj;
   if (obj instanceof Date) return new Date(obj.getTime()) as any;
-  if (obj instanceof Array) return obj.map(item => deepClone(item)) as any;
+  if (obj instanceof Array) return obj.map((item) => deepClone(item)) as any;
   if (obj instanceof Object) {
     const copy: any = {};
-    Object.keys(obj).forEach(key => {
+    Object.keys(obj).forEach((key) => {
       copy[key] = deepClone((obj as any)[key]);
     });
     return copy;
@@ -99,5 +99,5 @@ export const isNotEmpty = (str: string): boolean => {
  * Creates a delay (for testing or animations)
  */
 export const delay = (ms: number): Promise<void> => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}; 
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};

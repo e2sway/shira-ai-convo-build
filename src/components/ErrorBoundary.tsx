@@ -1,11 +1,5 @@
 import React, { Component, ReactNode } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import Button from './Button';
 import { COLORS, SPACING, FONT_SIZES, BORDER_RADIUS } from '../constants';
 
@@ -21,7 +15,10 @@ interface IErrorBoundaryState {
   errorInfo: React.ErrorInfo | null;
 }
 
-export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundaryState> {
+export class ErrorBoundary extends Component<
+  IErrorBoundaryProps,
+  IErrorBoundaryState
+> {
   constructor(props: IErrorBoundaryProps) {
     super(props);
     this.state = {
@@ -51,7 +48,10 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
     this.props.onError?.(error, errorInfo);
   }
 
-  private logErrorToService = (error: Error, errorInfo: React.ErrorInfo): void => {
+  private logErrorToService = (
+    error: Error,
+    errorInfo: React.ErrorInfo
+  ): void => {
     // In a real app, you would send this to your error reporting service
     console.error('ErrorBoundary caught an error:', {
       message: error.message,
@@ -75,7 +75,7 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
         <View style={styles.iconContainer}>
           <Text style={styles.icon}>⚠️</Text>
         </View>
-        
+
         <Text style={styles.title}>Oops! Something went wrong</Text>
         <Text style={styles.message}>
           We're sorry, but something unexpected happened. Please try again.
@@ -95,13 +95,9 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
           <View style={styles.debugContainer}>
             <Text style={styles.debugTitle}>Debug Information:</Text>
             <ScrollView style={styles.debugScroll}>
-              <Text style={styles.debugText}>
-                {this.state.error.message}
-              </Text>
+              <Text style={styles.debugText}>{this.state.error.message}</Text>
               {this.state.error.stack && (
-                <Text style={styles.debugStack}>
-                  {this.state.error.stack}
-                </Text>
+                <Text style={styles.debugStack}>{this.state.error.stack}</Text>
               )}
             </ScrollView>
           </View>
@@ -116,7 +112,7 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
       if (this.props.fallback) {
         return this.props.fallback(this.state.error, this.resetError);
       }
-      
+
       return this.renderDefaultFallback();
     }
 
@@ -187,4 +183,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ErrorBoundary; 
+export default ErrorBoundary;

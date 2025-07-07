@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./App.{js,jsx,ts,tsx}",
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./app/**/*.{js,jsx,ts,tsx}",
+    './App.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     extend: {
@@ -64,26 +64,26 @@ module.exports = {
       },
       spacing: {
         // Additional spacing for mobile layouts
-        '18': '4.5rem',
-        '88': '22rem',
-        '128': '32rem',
+        18: '4.5rem',
+        88: '22rem',
+        128: '32rem',
       },
       borderRadius: {
         // Mobile-friendly border radius
-        'xl': '1rem',
+        xl: '1rem',
         '2xl': '1.5rem',
         '3xl': '2rem',
       },
       boxShadow: {
         // React Native compatible shadows
-        'audio': '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-        'conversation': '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+        audio: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+        conversation: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
       },
       animation: {
         // Audio visualization animations
         'pulse-audio': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'wave': 'wave 2s ease-in-out infinite',
-        'recording': 'recording 1s ease-in-out infinite alternate',
+        wave: 'wave 2s ease-in-out infinite',
+        recording: 'recording 1s ease-in-out infinite alternate',
       },
       keyframes: {
         wave: {
@@ -103,4 +103,4 @@ module.exports = {
     // Disable plugins that don't work well with React Native
     preflight: false,
   },
-}; 
+};

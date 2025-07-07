@@ -23,4 +23,4 @@ export type NavigationStackParamList = {
   Conversation: { conversationId?: string };
   Settings: undefined;
   History: undefined;
-}; 
+};

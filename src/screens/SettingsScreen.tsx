@@ -22,7 +22,10 @@ const SettingsScreen: React.FC<ISettingsScreenProps> = ({ navigation }) => {
   const preferences = usePreferences();
   const { setPreferences } = useAppStore();
 
-  const handleToggleChange = (key: keyof typeof preferences, value: boolean) => {
+  const handleToggleChange = (
+    key: keyof typeof preferences,
+    value: boolean
+  ) => {
     setPreferences({ [key]: value });
   };
 
@@ -38,7 +41,10 @@ const SettingsScreen: React.FC<ISettingsScreenProps> = ({ navigation }) => {
         />
       </View>
 
-      <ScrollView style={styles.content} contentContainerStyle={styles.contentContainer}>
+      <ScrollView
+        style={styles.content}
+        contentContainerStyle={styles.contentContainer}
+      >
         {/* Audio Settings Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Audio</Text>
@@ -115,7 +121,9 @@ const SettingsScreen: React.FC<ISettingsScreenProps> = ({ navigation }) => {
               </View>
               <Switch
                 value={preferences.pushNotifications}
-                onValueChange={(value) => handleToggleChange('pushNotifications', value)}
+                onValueChange={(value) =>
+                  handleToggleChange('pushNotifications', value)
+                }
                 trackColor={{ false: COLORS.GRAY_LIGHT, true: COLORS.PRIMARY }}
                 thumbColor={COLORS.WHITE}
               />
@@ -230,4 +238,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingsScreen; 
+export default SettingsScreen;

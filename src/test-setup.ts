@@ -44,7 +44,8 @@ jest.mock('@react-navigation/native', () => ({
   useRoute: () => ({
     params: {},
   }),
-  NavigationContainer: ({ children }: { children: React.ReactNode }) => children,
+  NavigationContainer: ({ children }: { children: React.ReactNode }) =>
+    children,
 }));
 
 // Mock Zustand store
@@ -112,7 +113,8 @@ jest.mock('@tanstack/react-query', () => ({
     clear: jest.fn(),
     invalidateQueries: jest.fn(),
   })),
-  QueryClientProvider: ({ children }: { children: React.ReactNode }) => children,
+  QueryClientProvider: ({ children }: { children: React.ReactNode }) =>
+    children,
   useQuery: jest.fn(),
   useMutation: jest.fn(),
 }));
@@ -140,4 +142,4 @@ beforeAll(() => {
 
 afterAll(() => {
   console.error = originalError;
-}); 
+});

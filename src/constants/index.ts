@@ -3,13 +3,13 @@
 // Color Palette
 export const COLORS = {
   // Primary Brand Colors
-  PRIMARY: '#007AFF',     // Bright blue - main brand color
+  PRIMARY: '#007AFF', // Bright blue - main brand color
   PRIMARY_LIGHT: '#4DA3FF',
   PRIMARY_DARK: '#0056CC',
-  SECONDARY: '#FF9500',   // Green - success/positive actions
+  SECONDARY: '#FF9500', // Green - success/positive actions
   SECONDARY_LIGHT: '#FFB84D',
   SECONDARY_DARK: '#CC7700',
-  ACCENT: '#e74c3c',      // Red - alerts/important actions
+  ACCENT: '#e74c3c', // Red - alerts/important actions
 
   // Neutral Colors
   WHITE: '#FFFFFF',
@@ -22,8 +22,8 @@ export const COLORS = {
   BACKGROUND_PRIMARY: '#f8f9fa',
   BACKGROUND_SECONDARY: '#ffffff',
   BACKGROUND_TERTIARY: '#ecf0f1',
-  BACKGROUND: '#FFFFFF',           // Default background
-  CARD_BACKGROUND: '#F8F9FA',      // Card background
+  BACKGROUND: '#FFFFFF', // Default background
+  CARD_BACKGROUND: '#F8F9FA', // Card background
 
   // Text Colors
   TEXT_PRIMARY: '#000000',
@@ -120,7 +120,8 @@ export const Z_INDEX = {
 
 // API Configuration
 export const API_ENDPOINTS = {
-  BASE_URL: process.env['EXPO_PUBLIC_API_BASE_URL'] || 'https://api.shira-ai.com',
+  BASE_URL:
+    process.env['EXPO_PUBLIC_API_BASE_URL'] || 'https://api.shira-ai.com',
   AUTH: '/auth',
   CONVERSATIONS: '/conversations',
   USERS: '/users',
@@ -129,10 +130,10 @@ export const API_ENDPOINTS = {
 
 // Application Configuration
 export const APP_CONFIG = {
-  TIMEOUT: 30000,                    // 30 seconds
+  TIMEOUT: 30000, // 30 seconds
   MAX_RETRIES: 3,
-  RETRY_DELAY: 1000,                 // 1 second
-  DEFAULT_LANGUAGE: 'es',            // Spanish
+  RETRY_DELAY: 1000, // 1 second
+  DEFAULT_LANGUAGE: 'es', // Spanish
   SUPPORTED_LANGUAGES: ['es', 'en'],
   VERSION: '1.0.0',
   ENVIRONMENT: process.env['NODE_ENV'] || 'development',
@@ -167,7 +168,7 @@ export const SHADOWS = {
       width: 0,
       height: 4,
     },
-    shadowOpacity: 0.30,
+    shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 8,
   },
@@ -195,4 +196,4 @@ export default {
   API_ENDPOINTS,
   APP_CONFIG,
   AUDIO_CONFIG,
-} as const; 
+} as const;

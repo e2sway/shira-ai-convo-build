@@ -9,9 +9,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#3498db"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.shira.ai.convo.build"
@@ -25,4 +23,4 @@
       }
     }
   }
-} 
+}

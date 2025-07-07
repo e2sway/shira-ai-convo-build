@@ -1,0 +1,17 @@
+{
+  "allowlist": [],
+  "deny-list": [],
+  "skip-dev": false,
+  "report-type": "important",
+  "package-manager": "npm",
+  "levels": {
+    "low": false,
+    "moderate": false,
+    "high": true,
+    "critical": true
+  },
+  "advisories": [],
+  "whitelist": [],
+  "modules": [],
+  "summary-fail-level": "high"
+}

@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { Button } from '../components';
 import { COLORS, SPACING, FONT_SIZES, BORDER_RADIUS } from '../constants';
 import { useAppStore } from '../stores/appStore';
@@ -22,36 +16,40 @@ const OnboardingScreen: React.FC<IOnboardingScreenProps> = ({ navigation }) => {
 
   const handleCompleteOnboarding = () => {
     // Mark onboarding as completed
-    setPreferences({ 
+    setPreferences({
       hasCompletedOnboarding: true,
       onboardingVersion: '1.0.0',
     });
-    
+
     // Navigate to main app
     navigation?.replace('Home');
   };
 
   const handleSkipOnboarding = () => {
     // Skip onboarding but still mark as completed
-    setPreferences({ 
+    setPreferences({
       hasCompletedOnboarding: true,
       onboardingVersion: '1.0.0',
     });
-    
+
     navigation?.replace('Home');
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.content} contentContainerStyle={styles.contentContainer}>
+      <ScrollView
+        style={styles.content}
+        contentContainerStyle={styles.contentContainer}
+      >
         <View style={styles.welcomeSection}>
           <View style={styles.logoPlaceholder}>
             <Text style={styles.logoText}>🗣️</Text>
           </View>
-          
+
           <Text style={styles.welcomeTitle}>Welcome to Shira AI</Text>
           <Text style={styles.welcomeDescription}>
-            Your AI-powered conversation partner for learning languages naturally through voice interaction.
+            Your AI-powered conversation partner for learning languages
+            naturally through voice interaction.
           </Text>
         </View>
 
@@ -90,7 +88,7 @@ const OnboardingScreen: React.FC<IOnboardingScreenProps> = ({ navigation }) => {
           size="large"
           fullWidth
         />
-        
+
         <Button
           title="Skip for now"
           onPress={handleSkipOnboarding}
@@ -180,4 +178,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OnboardingScreen; 
+export default OnboardingScreen;

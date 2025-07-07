@@ -17,7 +17,7 @@ class ApiService {
     options: RequestInit = {}
   ): Promise<T> {
     const url = `${this.baseURL}${endpoint}`;
-    
+
     const response = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
@@ -73,4 +73,4 @@ export const apiService = new ApiService({
   timeout: 30000,
 });
 
-export default apiService; 
+export default apiService;

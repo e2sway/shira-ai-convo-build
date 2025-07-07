@@ -32,23 +32,23 @@ export interface IUserPreferences {
 export interface IAppState {
   // Audio conversation state
   audio: IAudioState;
-  
+
   // User preferences
   preferences: IUserPreferences;
-  
+
   // Loading states
   isLoading: boolean;
-  
+
   // Error handling
   error: string | null;
-  
+
   // Actions
   setAudioState: (partialState: Partial<IAudioState>) => void;
   setPreferences: (partialPrefs: Partial<IUserPreferences>) => void;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
   clearError: () => void;
-  
+
   // Audio-specific actions
   startRecording: () => void;
   stopRecording: () => void;
@@ -56,11 +56,11 @@ export interface IAppState {
   stopPlayback: () => void;
   toggleMicrophone: () => void;
   setVolume: (volume: number) => void;
-  
+
   // Connection actions
   connect: () => void;
   disconnect: () => void;
-  
+
   // Reset actions
   resetAudioState: () => void;
   resetApp: () => void;
@@ -111,9 +111,9 @@ export const useAppStore = create<IAppState>()(
       })),
 
     setLoading: (loading) => set({ isLoading: loading }),
-    
+
     setError: (error) => set({ error }),
-    
+
     clearError: () => set({ error: null }),
 
     // Audio-specific actions
@@ -141,9 +141,9 @@ export const useAppStore = create<IAppState>()(
 
     toggleMicrophone: () =>
       set((state) => ({
-        audio: { 
-          ...state.audio, 
-          microphoneEnabled: !state.audio.microphoneEnabled 
+        audio: {
+          ...state.audio,
+          microphoneEnabled: !state.audio.microphoneEnabled,
         },
       })),
 
@@ -161,11 +161,11 @@ export const useAppStore = create<IAppState>()(
 
     disconnect: () =>
       set((state) => ({
-        audio: { 
-          ...state.audio, 
-          isConnected: false, 
-          isRecording: false, 
-          isPlaying: false 
+        audio: {
+          ...state.audio,
+          isConnected: false,
+          isRecording: false,
+          isPlaying: false,
         },
       })),
 
@@ -193,4 +193,4 @@ export const usePreferences = () => useAppStore((state) => state.preferences);
 export const useLoadingState = () => useAppStore((state) => state.isLoading);
 export const useErrorState = () => useAppStore((state) => state.error);
 
-export default useAppStore; 
+export default useAppStore;

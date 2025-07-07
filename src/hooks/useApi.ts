@@ -31,11 +31,11 @@ export const useApi = <T>(
 
   const execute = useCallback(
     async (...args: any[]): Promise<TApiResponse<T>> => {
-             setState((prev: IUseApiState<T>) => ({
-         ...prev,
-         loading: true,
-         error: null,
-       }));
+      setState((prev: IUseApiState<T>) => ({
+        ...prev,
+        loading: true,
+        error: null,
+      }));
 
       try {
         const response = await apiFunction(...args);
@@ -56,8 +56,11 @@ export const useApi = <T>(
 
         return response;
       } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
-        
+        const errorMessage =
+          error instanceof Error
+            ? error.message
+            : 'An unexpected error occurred';
+
         setState({
           data: null,
           loading: false,
@@ -88,4 +91,4 @@ export const useApi = <T>(
     execute,
     reset,
   };
-}; 
+};

@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { Button } from '../components';
 import { COLORS, SPACING, FONT_SIZES, BORDER_RADIUS } from '../constants';
 
@@ -27,17 +21,21 @@ const HistoryScreen: React.FC<IHistoryScreenProps> = ({ navigation }) => {
         <Text style={styles.title}>Conversation History</Text>
       </View>
 
-      <ScrollView style={styles.content} contentContainerStyle={styles.contentContainer}>
+      <ScrollView
+        style={styles.content}
+        contentContainerStyle={styles.contentContainer}
+      >
         <View style={styles.emptyState}>
           <View style={styles.iconPlaceholder}>
             <Text style={styles.iconText}>📝</Text>
           </View>
-          
+
           <Text style={styles.emptyTitle}>No conversations yet</Text>
           <Text style={styles.emptyDescription}>
-            Your conversation history with Shira AI will appear here once you start chatting.
+            Your conversation history with Shira AI will appear here once you
+            start chatting.
           </Text>
-          
+
           <Button
             title="Start First Conversation"
             onPress={handleStartNewConversation}
@@ -110,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HistoryScreen; 
+export default HistoryScreen;
