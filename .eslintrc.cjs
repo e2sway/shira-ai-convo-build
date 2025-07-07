@@ -13,6 +13,17 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'warn',
       },
     },
+    {
+      files: ['**/__tests__/**/*', '**/*.test.*', '**/*.spec.*', '**/test-setup.ts'],
+      env: {
+        jest: true,
+      },
+      rules: {
+        'import/no-unresolved': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        'no-console': 'off',
+      },
+    },
   ],
   rules: {
     // General code quality rules

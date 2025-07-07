@@ -57,6 +57,8 @@ const Button: React.FC<IButtonProps> = ({
       onPress={onPress}
       disabled={disabled || loading}
       activeOpacity={0.7}
+      accessibilityRole="button"
+      accessibilityLabel={title}
     >
       {loading ? (
         <ActivityIndicator

@@ -22,6 +22,8 @@ export interface IUserPreferences {
   audioQuality: 'low' | 'medium' | 'high';
   autoPlay: boolean;
   pushNotifications: boolean;
+  hasCompletedOnboarding: boolean;
+  onboardingVersion: string;
 }
 
 /**
@@ -82,6 +84,8 @@ const initialPreferences: IUserPreferences = {
   audioQuality: 'high',
   autoPlay: true,
   pushNotifications: true,
+  hasCompletedOnboarding: false,
+  onboardingVersion: '1.0.0',
 };
 
 /**
