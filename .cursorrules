@@ -1,0 +1,152 @@
+# Shira AI Conversation Builder - Cursor Rules
+
+## Project Overview
+This is a React Native Expo TypeScript project for building an AI conversation interface. Follow these rules to maintain code quality and consistency.
+
+## Tech Stack
+- React Native with Expo Go
+- TypeScript
+- Expo Router for navigation
+- Modern React patterns (hooks, functional components)
+- Task Master AI integration
+
+## Code Style & Best Practices
+
+### TypeScript
+- Always use TypeScript for new files
+- Define proper interfaces and types
+- Use strict type checking
+- Avoid `any` type - use proper typing
+- Use `const` assertions where appropriate
+
+### React Native & Expo
+- Use functional components with hooks
+- Follow Expo best practices
+- Use Expo Router for navigation
+- Implement proper error boundaries
+- Use SafeAreaView for safe areas
+- Follow React Native performance best practices
+
+### Component Structure
+- Use PascalCase for component names
+- Keep components small and focused (single responsibility)
+- Use proper prop typing with interfaces
+- Implement proper error handling
+- Use memo() for performance optimization when needed
+
+### Styling
+- Use StyleSheet.create() for styles
+- Follow consistent naming conventions for styles
+- Use Flexbox for layouts
+- Implement responsive design principles
+- Use consistent color palette and spacing
+- Follow accessibility guidelines
+
+### File Organization
+```
+src/
+  components/     # Reusable UI components
+  screens/        # Screen components
+  navigation/     # Navigation configuration
+  services/       # API and business logic
+  hooks/          # Custom hooks
+  utils/          # Helper functions
+  types/          # TypeScript type definitions
+  constants/      # App constants
+  assets/         # Images, fonts, etc.
+```
+
+### Naming Conventions
+- Components: PascalCase (e.g., `UserProfile.tsx`)
+- Files: camelCase or kebab-case (e.g., `userService.ts`, `api-client.ts`)
+- Variables/Functions: camelCase
+- Constants: UPPER_SNAKE_CASE
+- Interfaces: PascalCase with 'I' prefix (e.g., `IUser`)
+- Types: PascalCase with 'T' prefix (e.g., `TApiResponse`)
+
+### Code Quality
+- Write self-documenting code
+- Add JSDoc comments for complex functions
+- Use meaningful variable and function names
+- Keep functions small and focused
+- Implement proper error handling
+- Write unit tests for critical functionality
+- Use ESLint and Prettier for code formatting
+
+### Performance
+- Use React.memo() for expensive components
+- Implement proper list optimization (FlatList)
+- Lazy load components when appropriate
+- Optimize images and assets
+- Use proper state management
+- Avoid unnecessary re-renders
+
+### Security
+- Validate all user inputs
+- Use proper authentication
+- Secure API endpoints
+- Handle sensitive data properly
+- Follow OWASP mobile security guidelines
+
+### AI Integration
+- Use Task Master AI for project management
+- Maintain context with PRD alignment
+- Implement proper AI response handling
+- Follow conversation flow patterns
+
+### Git & Development
+- Use conventional commits
+- Create feature branches
+- Write descriptive commit messages
+- Keep commits atomic and focused
+- Use proper branch naming (feature/, bugfix/, hotfix/)
+
+### Testing
+- Write unit tests for utilities and services
+- Test components with React Native Testing Library
+- Implement integration tests for critical flows
+- Use proper mocking for external dependencies
+
+### Documentation
+- Update README for setup instructions
+- Document API interfaces
+- Maintain changelog for releases
+- Comment complex business logic
+
+## Common Patterns
+
+### API Calls
+```typescript
+const fetchData = async (): Promise<TApiResponse> => {
+  try {
+    const response = await fetch('/api/data');
+    return await response.json();
+  } catch (error) {
+    throw new Error(`Failed to fetch data: ${error.message}`);
+  }
+};
+```
+
+### Component Structure
+```typescript
+interface IComponentProps {
+  title: string;
+  onPress: () => void;
+}
+
+const Component: React.FC<IComponentProps> = ({ title, onPress }) => {
+  return (
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Text style={styles.title}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
+```
+
+### Error Boundaries
+Implement error boundaries for all major screen components.
+
+### State Management
+Use React hooks for local state, Context API for global state, or implement Redux Toolkit if needed.
+
+Remember: Always prioritize user experience, performance, and maintainability in your code decisions. 

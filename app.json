@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Shira AI Convo Build",
+    "slug": "shira-ai-convo-build",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#3498db"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shira.ai.convo.build"
+    },
+    "android": {
+      "package": "com.shira.ai.convo.build"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id-here"
+      }
+    }
+  }
+} 
