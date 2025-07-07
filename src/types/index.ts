@@ -31,10 +31,10 @@ export interface IAIResponse {
   message: string;
   confidence: number;
   suggestions?: string[];
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
-export type TApiResponse<T = any> = {
+export type TApiResponse<T = unknown> = {
   success: boolean;
   data?: T;
   error?: string;
@@ -51,7 +51,7 @@ export type TNavigationParams = {
 export interface IApiError {
   code: string;
   message: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
 }
 
 // Task Master AI Integration Types

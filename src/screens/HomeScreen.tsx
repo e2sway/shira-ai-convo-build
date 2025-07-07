@@ -4,19 +4,16 @@ import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { Button } from '../components';
 import { COLORS, SPACING, FONT_SIZES } from '../constants';
+import { logger } from '../utils';
 
-interface IHomeScreenProps {
-  // Navigation props will be added when setting up navigation
-}
-
-const HomeScreen: React.FC<IHomeScreenProps> = () => {
+const HomeScreen: React.FC = () => {
   const handleStartConversation = () => {
-    console.log('Starting new conversation...');
+    logger.logUserAction('home_start_conversation', 'HomeScreen');
     // TODO: Navigate to chat screen
   };
 
   const handleViewHistory = () => {
-    console.log('Viewing conversation history...');
+    logger.logUserAction('home_view_history', 'HomeScreen');
     // TODO: Navigate to history screen
   };
 

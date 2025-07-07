@@ -9,20 +9,20 @@ interface IUseApiState<T> {
   error: string | null;
 }
 
-interface IUseApiReturn<T> {
+interface IUseApiReturn<T, TArgs extends unknown[]> {
   data: T | null;
   loading: boolean;
   error: string | null;
-  execute: (...args: any[]) => Promise<TApiResponse<T>>;
+  execute: (...args: TArgs) => Promise<TApiResponse<T>>;
   reset: () => void;
 }
 
 /**
  * Custom hook for managing API call state
  */
-export const useApi = <T>(
-  apiFunction: (...args: any[]) => Promise<TApiResponse<T>>
-): IUseApiReturn<T> => {
+export const useApi = <T, TArgs extends unknown[] = []>(
+  apiFunction: (...args: TArgs) => Promise<TApiResponse<T>>
+): IUseApiReturn<T, TArgs> => {
   const [state, setState] = useState<IUseApiState<T>>({
     data: null,
     loading: false,
@@ -30,7 +30,7 @@ export const useApi = <T>(
   });
 
   const execute = useCallback(
-    async (...args: any[]): Promise<TApiResponse<T>> => {
+    async (...args: TArgs): Promise<TApiResponse<T>> => {
       setState((prev: IUseApiState<T>) => ({
         ...prev,
         loading: true,

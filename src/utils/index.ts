@@ -1,5 +1,7 @@
 // Utility Functions for Shira AI Conversation Builder
 
+export { logger } from './logger';
+
 /**
  * Formats a date to a human-readable string
  */
@@ -59,13 +61,13 @@ export const formatNumber = (num: number): string => {
 /**
  * Debounces a function call
  */
-export const debounce = <T extends (...args: any[]) => any>(
-  func: T,
+export const debounce = <TArgs extends unknown[]>(
+  func: (...args: TArgs) => void,
   wait: number
-): ((...args: Parameters<T>) => void) => {
+): ((...args: TArgs) => void) => {
   let timeout: number;
 
-  return (...args: Parameters<T>) => {
+  return (...args: TArgs) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait) as unknown as number;
   };
@@ -76,14 +78,14 @@ export const debounce = <T extends (...args: any[]) => any>(
  */
 export const deepClone = <T>(obj: T): T => {
   if (obj === null || typeof obj !== 'object') return obj;
-  if (obj instanceof Date) return new Date(obj.getTime()) as any;
-  if (obj instanceof Array) return obj.map((item) => deepClone(item)) as any;
+  if (obj instanceof Date) return new Date(obj.getTime()) as T;
+  if (obj instanceof Array) return obj.map((item) => deepClone(item)) as T;
   if (obj instanceof Object) {
-    const copy: any = {};
+    const copy: Record<string, unknown> = {};
     Object.keys(obj).forEach((key) => {
-      copy[key] = deepClone((obj as any)[key]);
+      copy[key] = deepClone((obj as Record<string, unknown>)[key]);
     });
-    return copy;
+    return copy as T;
   }
   return obj;
 };

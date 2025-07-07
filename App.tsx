@@ -7,7 +7,6 @@ import { AppNavigationContainer } from './src/navigation/NavigationContainer';
 import HomeScreen from './src/screens/HomeScreen';
 
 // NativeWind CSS import
-import './global.css';
 
 /**
  * Main App Component
