@@ -1,6 +1,6 @@
-// Reusable Button Component
+// 3D Press Effect Button Component
 
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -8,8 +8,9 @@ import {
   ActivityIndicator,
   ViewStyle,
   TextStyle,
+  Animated,
+  View,
 } from 'react-native';
-import { COLORS, SPACING, FONT_SIZES, BORDER_RADIUS } from '../constants';
 
 interface IButtonProps {
   title: string;
@@ -34,83 +35,152 @@ const Button: React.FC<IButtonProps> = ({
   textStyle,
   fullWidth = false,
 }) => {
-  const buttonStyle = [
-    styles.base,
+  const animatedValue = useRef(new Animated.Value(0)).current;
+
+  const handlePressIn = () => {
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.timing(animatedValue, {
+      toValue: 0,
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const translateY = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 6], // Move down 6px when pressed to cover the base button
+  });
+
+  const buttonContainerStyle = [
+    styles.buttonContainer,
+    fullWidth && styles.fullWidth,
+    style,
+  ];
+
+  const topButtonStyle = [
+    styles.topButton,
     styles[variant],
     styles[size],
-    fullWidth && styles.fullWidth,
     (disabled || loading) && styles.disabled,
-    style,
+  ];
+
+  const baseButtonStyle = [
+    styles.baseButton,
+    styles[size],
+    fullWidth && styles.fullWidth,
   ];
 
   const buttonTextStyle = [
     styles.baseText,
-    styles[`${variant}Text`],
     styles[`${size}Text`],
     (disabled || loading) && styles.disabledText,
     textStyle,
   ];
 
   return (
-    <TouchableOpacity
-      style={buttonStyle}
-      onPress={onPress}
-      disabled={disabled || loading}
-      activeOpacity={0.7}
-      accessibilityRole="button"
-      accessibilityLabel={title}
-    >
-      {loading ? (
-        <ActivityIndicator
-          size="small"
-          color={variant === 'primary' ? COLORS.WHITE : COLORS.PRIMARY}
-        />
-      ) : (
-        <Text style={buttonTextStyle}>{title}</Text>
-      )}
-    </TouchableOpacity>
+    <View style={buttonContainerStyle}>
+      {/* Base button (darker purple, positioned underneath) */}
+      <View style={baseButtonStyle} />
+      
+      {/* Top button (lighter purple, slides down when pressed) */}
+      <TouchableOpacity
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        onPress={onPress}
+        disabled={disabled || loading}
+        activeOpacity={1}
+        accessibilityRole="button"
+        accessibilityLabel={title}
+        style={styles.touchableArea}
+      >
+        <Animated.View
+          style={[
+            topButtonStyle,
+            {
+              transform: [{ translateY }],
+            },
+          ]}
+        >
+          {loading ? (
+            <ActivityIndicator
+              size="small"
+              color="#FFFFFF"
+            />
+          ) : (
+            <Text style={buttonTextStyle}>{title.toUpperCase()}</Text>
+          )}
+        </Animated.View>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  base: {
-    borderRadius: BORDER_RADIUS.MD,
+  buttonContainer: {
+    position: 'relative',
+    marginBottom: 6, // Add space for the base button
+  },
+
+  touchableArea: {
+    position: 'relative',
+    top: -6, // Position the touchable area above the base button
+  },
+
+  topButton: {
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
   },
 
-  // Variants
-  primary: {
-    backgroundColor: COLORS.PRIMARY,
-  },
-  secondary: {
-    backgroundColor: COLORS.SECONDARY,
-  },
-  outline: {
-    backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: COLORS.PRIMARY,
-  },
-  text: {
-    backgroundColor: 'transparent',
+  baseButton: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#5a3499', // Darker purple for base button
+    borderRadius: 12,
   },
 
-  // Sizes
+  // Variants (for top button)
+  primary: {
+    backgroundColor: '#7e4bde', // Main lighter purple
+  },
+  secondary: {
+    backgroundColor: '#7e4bde',
+  },
+  outline: {
+    backgroundColor: '#7e4bde',
+  },
+  text: {
+    backgroundColor: '#7e4bde',
+  },
+
+  // Button sizes (applied to both top and base)
   small: {
-    paddingHorizontal: SPACING.MD,
-    paddingVertical: SPACING.SM,
-    minHeight: 32,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    height: 36,
+    minWidth: 80,
   },
   medium: {
-    paddingHorizontal: SPACING.LG,
-    paddingVertical: SPACING.MD,
-    minHeight: 44,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    height: 48,
+    minWidth: 120,
   },
   large: {
-    paddingHorizontal: SPACING.XL,
-    paddingVertical: SPACING.LG,
-    minHeight: 52,
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    height: 56,
+    minWidth: 160,
   },
 
   fullWidth: {
@@ -123,31 +193,20 @@ const styles = StyleSheet.create({
 
   // Text styles
   baseText: {
-    fontWeight: '600',
+    fontWeight: 'bold',
     textAlign: 'center',
-  },
-
-  primaryText: {
-    color: COLORS.WHITE,
-  },
-  secondaryText: {
-    color: COLORS.WHITE,
-  },
-  outlineText: {
-    color: COLORS.PRIMARY,
-  },
-  textText: {
-    color: COLORS.PRIMARY,
+    color: '#FFFFFF',
+    letterSpacing: 1,
   },
 
   smallText: {
-    fontSize: FONT_SIZES.SM,
+    fontSize: 10,
   },
   mediumText: {
-    fontSize: FONT_SIZES.MD,
+    fontSize: 14,
   },
   largeText: {
-    fontSize: FONT_SIZES.LG,
+    fontSize: 16,
   },
 
   disabledText: {

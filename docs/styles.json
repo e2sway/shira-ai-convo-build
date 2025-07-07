@@ -1,0 +1,50 @@
+{
+  "colors": {
+    "background": "#F8F5ED",
+    "description": "Rich creamy background color for the entire app"
+  },
+  "buttons": {
+    "3d_press_effect": {
+      "description": "3D layered button with press animation effect",
+      "colors": {
+        "top_button": "#7e4bde",
+        "base_button": "#5a3499",
+        "text": "#FFFFFF"
+      },
+      "border_radius": 12,
+      "animation": {
+        "press_distance": "6px",
+        "press_duration": "100ms",
+        "release_duration": "150ms"
+      },
+      "typography": {
+        "font_weight": "bold",
+        "text_transform": "uppercase",
+        "letter_spacing": 1,
+        "font_sizes": {
+          "small": 10,
+          "medium": 14,
+          "large": 16
+        }
+      }
+    }
+  },
+  "typewriter_effect": {
+    "description": "Typewriter component for cycling through language learning phrases",
+    "settings": {
+      "type_speed": "50-60ms per character",
+      "delete_speed": "20-25ms per character",
+      "pause_duration": "2000ms between phrases"
+    },
+    "cursor": {
+      "color": "#7e4bde",
+      "size": "28px",
+      "blink_interval": "500ms"
+    },
+    "haptic_feedback": {
+      "typing": "Light impact feedback",
+      "backspacing": "Medium impact feedback",
+      "configurable": "Can be disabled with enableHaptics prop"
+    }
+  }
+}

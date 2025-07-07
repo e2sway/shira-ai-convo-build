@@ -3,8 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { queryClient } from './src/services/queryClient';
-import { AppNavigationContainer } from './src/navigation/NavigationContainer';
-import HomeScreen from './src/screens/HomeScreen';
+import { AppNavigationContainer, AppNavigator } from './src/navigation';
 
 // NativeWind CSS import
 
@@ -18,7 +17,7 @@ export default function App(): React.ReactElement {
       <QueryClientProvider client={queryClient}>
         <AppNavigationContainer>
           <StatusBar style="auto" />
-          <HomeScreen />
+          <AppNavigator />
         </AppNavigationContainer>
       </QueryClientProvider>
     </SafeAreaProvider>

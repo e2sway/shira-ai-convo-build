@@ -1,58 +1,53 @@
 // Home Screen for Shira AI Conversation Builder
 
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-import { Button } from '../components';
-import { COLORS, SPACING, FONT_SIZES } from '../constants';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { Button, TypewriterText } from '../components';
+import { SPACING } from '../constants';
 import { logger } from '../utils';
+import { RootStackParamList } from '../navigation/AppNavigator';
+
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 const HomeScreen: React.FC = () => {
+  const navigation = useNavigation<HomeScreenNavigationProp>();
+
   const handleStartConversation = () => {
     logger.logUserAction('home_start_conversation', 'HomeScreen');
-    // TODO: Navigate to chat screen
+    navigation.navigate('Conversation', {});
   };
 
   const handleViewHistory = () => {
     logger.logUserAction('home_view_history', 'HomeScreen');
-    // TODO: Navigate to history screen
+    navigation.navigate('History');
   };
+
+  const practicePhrases = [
+    "ordering coffee",
+    "introducing yourself",
+    "asking for directions", 
+    "small talk",
+    "pronunciation"
+  ];
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Welcome to Shira AI</Text>
-          <Text style={styles.subtitle}>
-            Your intelligent conversation builder
-          </Text>
+      <View style={styles.content}>
+        <View style={styles.topSection}>
+          <Text style={styles.mainTitle}>Hey, Shira</Text>
+          <Text style={styles.subTitle}>lets practice</Text>
+          <TypewriterText 
+            phrases={practicePhrases}
+            style={styles.typewriterText}
+            typeSpeed={50}
+            deleteSpeed={20}
+            pauseDuration={2000}
+          />
         </View>
 
-        <View style={styles.featuresSection}>
-          <Text style={styles.sectionTitle}>Features</Text>
-
-          <View style={styles.featureItem}>
-            <Text style={styles.featureTitle}>AI-Powered Conversations</Text>
-            <Text style={styles.featureDescription}>
-              Build intelligent conversations with advanced AI capabilities
-            </Text>
-          </View>
-
-          <View style={styles.featureItem}>
-            <Text style={styles.featureTitle}>Task Management</Text>
-            <Text style={styles.featureDescription}>
-              Integrated with Task Master AI for organized development
-            </Text>
-          </View>
-
-          <View style={styles.featureItem}>
-            <Text style={styles.featureTitle}>Cross-Platform</Text>
-            <Text style={styles.featureDescription}>
-              Works seamlessly on iOS, Android, and web platforms
-            </Text>
-          </View>
-        </View>
-
-        <View style={styles.actions}>
+        <View style={styles.actionsSection}>
           <Button
             title="Start New Conversation"
             onPress={handleStartConversation}
@@ -71,7 +66,7 @@ const HomeScreen: React.FC = () => {
             fullWidth
           />
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
@@ -79,63 +74,41 @@ const HomeScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.BACKGROUND,
+    backgroundColor: '#F8F5ED', // Much more creamy background
   },
   content: {
+    flex: 1,
     padding: SPACING.LG,
   },
-  header: {
+  topSection: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: SPACING.XXL,
+    paddingVertical: SPACING.XXL,
   },
-  title: {
-    fontSize: FONT_SIZES.XXL,
+  mainTitle: {
+    fontSize: 48, // H1 equivalent
     fontWeight: 'bold',
-    color: COLORS.TEXT_PRIMARY,
+    color: '#2c2c2c',
     textAlign: 'center',
-    marginBottom: SPACING.SM,
-  },
-  subtitle: {
-    fontSize: FONT_SIZES.LG,
-    color: COLORS.TEXT_SECONDARY,
-    textAlign: 'center',
-  },
-  featuresSection: {
-    marginBottom: SPACING.XXL,
-  },
-  sectionTitle: {
-    fontSize: FONT_SIZES.XL,
-    fontWeight: '600',
-    color: COLORS.TEXT_PRIMARY,
-    marginBottom: SPACING.LG,
-  },
-  featureItem: {
-    backgroundColor: COLORS.CARD_BACKGROUND,
-    padding: SPACING.LG,
-    borderRadius: 12,
     marginBottom: SPACING.MD,
-    shadowColor: COLORS.BLACK,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
   },
-  featureTitle: {
-    fontSize: FONT_SIZES.LG,
-    fontWeight: '600',
-    color: COLORS.TEXT_PRIMARY,
-    marginBottom: SPACING.SM,
+  subTitle: {
+    fontSize: 28, // H2 equivalent
+    fontWeight: '500',
+    color: '#4a4a4a',
+    textAlign: 'center',
+    marginBottom: SPACING.MD,
   },
-  featureDescription: {
-    fontSize: FONT_SIZES.MD,
-    color: COLORS.TEXT_SECONDARY,
-    lineHeight: 20,
+  typewriterText: {
+    fontSize: 24, // H3 equivalent
+    color: '#4a4a4a',
+    textAlign: 'center',
+    minHeight: 60, // Prevents layout shift during typing
+    fontWeight: '500',
   },
-  actions: {
-    marginTop: SPACING.LG,
+  actionsSection: {
+    paddingBottom: SPACING.LG,
   },
   spacer: {
     height: SPACING.MD,
