@@ -11,4 +11,16 @@
 // - Authentication flow
 
 // Placeholder export to prevent module errors
-export const NavigationPlaceholder = 'Navigation setup pending'; 
+export const NavigationPlaceholder = 'Navigation setup pending';
+
+// Navigation exports for Shira AI Conversation Builder
+
+export { default as AppNavigationContainer } from './NavigationContainer';
+
+// Navigation types and utilities can be added here as the app grows
+export type NavigationStackParamList = {
+  Home: undefined;
+  Conversation: { conversationId?: string };
+  Settings: undefined;
+  History: undefined;
+}; 

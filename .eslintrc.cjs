@@ -1,30 +1,26 @@
 module.exports = {
-  extends: ['expo', 'expo/node'],
+  extends: ['expo'],
+  parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
-      parser: '@typescript-eslint/parser',
-      plugins: ['@typescript-eslint'],
+      extends: ['expo'],
       rules: {
-        // Essential TypeScript rules
-        '@typescript-eslint/no-unused-vars': 'warn',
-        '@typescript-eslint/no-explicit-any': 'warn',
+        // Essential TypeScript rules that don't require parser services
+        '@typescript-eslint/no-unused-vars': 'error',
         '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        
-        // Code quality rules that work well with Expo
-        'prefer-const': 'error',
-        'no-var': 'error',
-        'no-console': 'warn',
+        '@typescript-eslint/no-explicit-any': 'warn',
       },
     },
   ],
   rules: {
-    // General rules for all file types
+    // General code quality rules
     'prefer-const': 'error',
     'no-var': 'error',
     'no-console': 'warn',
+    'no-debugger': 'error',
     'no-duplicate-imports': 'error',
+    'eqeqeq': 'error',
   },
 }; 

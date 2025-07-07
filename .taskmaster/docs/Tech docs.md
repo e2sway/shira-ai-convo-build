@@ -28,3 +28,5 @@ https://supabase.com/docs/guides/getting-started/mcp
 Babel
 https://babeljs.io/docs/
 
+Powershell
+https://learn.microsoft.com/en-us/powershell/
