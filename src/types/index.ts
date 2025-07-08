@@ -72,3 +72,6 @@ export interface IPRDContext {
   requirements: string[];
   constraints: string[];
 }
+
+// Database Types (Supabase)
+export * from './database';
