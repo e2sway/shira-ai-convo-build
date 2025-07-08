@@ -16,6 +16,7 @@ export const NavigationPlaceholder = 'Navigation setup pending';
 // Navigation exports for Shira AI Conversation Builder
 
 export { default as AppNavigationContainer } from './NavigationContainer';
+export { default as AppNavigator, type RootStackParamList } from './AppNavigator';
 
 // Navigation types and utilities can be added here as the app grows
 export type NavigationStackParamList = {
@@ -23,4 +24,5 @@ export type NavigationStackParamList = {
   Conversation: { conversationId?: string };
   Settings: undefined;
   History: undefined;
+  Onboarding: undefined;
 };
