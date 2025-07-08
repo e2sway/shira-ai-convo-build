@@ -4,7 +4,6 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { queryClient } from './src/services/queryClient';
 import { AppNavigationContainer, AppNavigator } from './src/navigation';
-import HomeScreen from './src/screens/HomeScreen';
 // Temporarily disabled for debugging
 // import { supabase, testConnection } from './src/services/supabaseClient';
 import { logger } from './src/utils';
