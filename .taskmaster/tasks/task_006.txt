@@ -1,0 +1,31 @@
+# Task ID: 6
+# Title: Create Hardcoded Conversation Prompts
+# Status: pending
+# Dependencies: 2, 5
+# Priority: medium
+# Description: Prepare initial system prompts for MVP conversations.
+# Details:
+Write 3 hardcoded initial system prompts for 'Introduction' category. Embed SYS-001, SYS-002, and basic task instructions. Store prompts in Supabase Storage.
+
+# Test Strategy:
+Validate prompt content, structure, and storage. Test prompt retrieval and usage in session orchestration.
+
+# Subtasks:
+## 1. Write and Validate Prompt Content [pending]
+### Dependencies: None
+### Description: Draft each prompt, ensuring clarity, relevance, and alignment with project requirements. Validate content for accuracy and completeness, considering real-time audio processing needs and backend integration points.
+### Details:
+Apply TypeScript best practices by defining explicit types for prompt data structures. Use meaningful variable and function names, and break down logic into small, testable units. Ensure prompts are structured for easy extension and localization if needed. Validate content through peer review or automated checks.
+
+## 2. Implement Structuring, Error Handling, and Testing [pending]
+### Dependencies: 6.1
+### Description: Structure the codebase for maintainability and performance, focusing on React Native and TypeScript best practices. Implement robust error handling and comprehensive automated tests.
+### Details:
+Organize code into modular components and utilities, separating concerns between UI, business logic, and data access. Use ESLint and Prettier for code consistency. Implement error boundaries and input validation. Write unit and integration tests using Jest and Testing Library, including story-driven test cases for real-time audio and backend scenarios.
+
+## 3. Upload Prompts to Supabase Storage with Backend Integration [pending]
+### Dependencies: 6.2
+### Description: Develop and test the logic for uploading validated prompts to Supabase Storage, ensuring secure and reliable backend integration.
+### Details:
+Use TypeScript interfaces for API contracts. Handle upload errors gracefully and provide user feedback. Ensure the upload process is efficient and does not block the UI, leveraging React Native performance patterns. Validate successful uploads and handle edge cases such as network failures or authentication issues.
+

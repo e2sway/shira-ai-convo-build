@@ -1,0 +1,43 @@
+# Task ID: 7
+# Title: Implement Onboarding Flow
+# Status: pending
+# Dependencies: 1, 4
+# Priority: medium
+# Description: Develop onboarding screens for user setup.
+# Details:
+Create 3 welcome screens (hook, problem validation, solution preview). Add 2 setup screens (language level selection, goals/motivation). Integrate voice permission request into first practice.
+
+# Test Strategy:
+Test navigation, user input, and permission handling. Validate onboarding flow and data collection.
+
+# Subtasks:
+## 1. Design and Implement Welcome and Setup Screens [pending]
+### Dependencies: None
+### Description: Create visually appealing and accessible welcome and setup screens using React Native, ensuring clean code structure and adherence to TypeScript best practices. Focus on modular components, separation of concerns, and performance optimization.
+### Details:
+Use libraries like react-native-onboarding-swiper for onboarding flows. Ensure screens are reusable, theme-consistent, and support both Android and iOS. Apply TypeScript interfaces for props and state, and follow React Native performance patterns such as memoization and avoiding unnecessary re-renders.[1][3]
+
+## 2. Integrate Voice Permission Requests and Real-Time Audio Handling [pending]
+### Dependencies: 7.1
+### Description: Implement logic to request and manage microphone permissions, and set up real-time audio processing hooks. Ensure robust error handling and user feedback for permission denials or failures.
+### Details:
+Use platform APIs to request voice permissions and handle edge cases. Integrate audio libraries suitable for real-time processing, ensuring clean separation between UI and audio logic. Validate permission status before proceeding to audio features, and provide clear user prompts and fallback flows.
+
+## 3. Implement Navigation and User Flow Control [pending]
+### Dependencies: 7.1
+### Description: Set up navigation between onboarding, setup, and main app screens using a robust navigation library. Ensure that onboarding is only shown on first launch and that navigation state is managed cleanly.
+### Details:
+Utilize React Navigation or similar, with TypeScript-typed routes. Store onboarding completion state (e.g., AsyncStorage) to control user flow. Ensure navigation logic is decoupled from UI components and supports deep linking and back navigation.[5]
+
+## 4. Validate and Manage Data Collection [pending]
+### Dependencies: 7.1, 7.3
+### Description: Implement data validation for all user inputs during onboarding and setup. Ensure collected data is sanitized, validated, and securely transmitted to the backend.
+### Details:
+Use TypeScript types and validation libraries to enforce data integrity. Handle validation errors gracefully with user-friendly messages. Integrate with backend APIs using clean, testable service layers, and ensure proper error handling for network or validation failures.
+
+## 5. Comprehensive Testing and Maintainable Architecture [pending]
+### Dependencies: 7.1, 7.2, 7.3, 7.4
+### Description: Develop unit, integration, and end-to-end tests for onboarding flows, permissions, navigation, and data handling. Refactor codebase for maintainability, applying separation of concerns and scalable architecture patterns.
+### Details:
+Write tests using Jest and React Native Testing Library, covering edge cases and error states. Structure code into feature modules, use dependency injection where appropriate, and document architectural decisions. Continuously review for performance bottlenecks and code smells.
+
